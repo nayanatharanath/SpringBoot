@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import net.training1.employeeservice.dto.DepartmentDto;
 
 @FeignClient(url = "http://localhost:8080/", value = "Department-Service")
+// @FeignClient(name = "DEPARTMENT-SERVICE")
 public interface APIClient {
 
 	// build get department REST API

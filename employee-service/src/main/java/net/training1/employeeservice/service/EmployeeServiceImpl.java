@@ -28,12 +28,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 	public EmployeeDto saveEmployee(EmployeeDto employeeDto) {
 
 		Employee employee = new Employee(employeeDto.getId(), employeeDto.getFirstName(), employeeDto.getLastName(),
-				employeeDto.getEmail(), employeeDto.getDepartmentCode());
+				employeeDto.getEmail(), employeeDto.getDepartmentCode(), employeeDto.getOrganizationCode());
 
 		Employee savedEmployee = employeeRepo.save(employee);
 
 		EmployeeDto savedEmployeeDto = new EmployeeDto(savedEmployee.getId(), savedEmployee.getFirstName(),
-				savedEmployee.getLastName(), savedEmployee.getEmail(), savedEmployee.getDepartmentCode());
+				savedEmployee.getLastName(), savedEmployee.getEmail(), savedEmployee.getDepartmentCode(),
+				savedEmployee.getOrganizationCode());
 
 		return savedEmployeeDto;
 	}
@@ -54,7 +55,7 @@ public class EmployeeServiceImpl implements EmployeeService {
 		DepartmentDto departmentDto = apiClient.getDepartment(employee.getDepartmentCode());
 
 		EmployeeDto employeeDto = new EmployeeDto(employee.getId(), employee.getFirstName(), employee.getLastName(),
-				employee.getEmail(), employee.getDepartmentCode());
+				employee.getEmail(), employee.getDepartmentCode(), employee.getOrganizationCode());
 
 		APIResponseDto apiResponseDto = new APIResponseDto();
 		apiResponseDto.setEmployee(employeeDto);
