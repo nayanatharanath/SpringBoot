@@ -2,15 +2,21 @@ package net.training1.employeeservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
-import org.springframework.cloud.openfeign.EnableFeignClients;
+
+// import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 // import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
+
 @SpringBootApplication
-@EnableFeignClients
-@EnableEurekaClient
+// @EnableFeignClients
+@OpenAPIDefinition(info = @Info(title = "Employee Rest API Documentation", description = "Employee Rest API Documentation description", version = "v1.0", contact = @Contact(name = "Nayana", email = "", url = "https://www.youtube.com"), license = @License(name = "Apache 2.0", url = "")), externalDocs = @ExternalDocumentation(description = "External Doc", url = ""))
 public class EmployeeServiceApplication {
 
 //	@Bean
@@ -18,10 +24,10 @@ public class EmployeeServiceApplication {
 //		return new RestTemplate();
 //	}
 
-//	@Bean
-//	public WebClient webClient() {
-//		return WebClient.builder().build();
-//	}
+	@Bean
+	public WebClient webClient() {
+		return WebClient.builder().build();
+	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(EmployeeServiceApplication.class, args);

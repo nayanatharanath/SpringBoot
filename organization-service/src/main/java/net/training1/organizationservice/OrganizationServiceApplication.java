@@ -2,10 +2,17 @@ package net.training1.organizationservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
+import io.swagger.v3.oas.annotations.ExternalDocumentation;
+import io.swagger.v3.oas.annotations.OpenAPIDefinition;
+import io.swagger.v3.oas.annotations.info.Contact;
+import io.swagger.v3.oas.annotations.info.Info;
+import io.swagger.v3.oas.annotations.info.License;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+
+@OpenAPIDefinition(info = @Info(title = "Organization Rest API Documentation", description = "Organization Rest API Documentation description", version = "v1.0", contact = @Contact(name = "Nayana", email = "", url = "https://www.youtube.com"), license = @License(name = "Apache 2.0", url = "")), externalDocs = @ExternalDocumentation(description = "External Doc", url = ""))
 @SpringBootApplication
-@EnableEurekaClient
+//@EnableEurekaClient
 public class OrganizationServiceApplication {
 
 	public static void main(String[] args) {
