@@ -1,5 +1,7 @@
 package com.example.student.service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -8,6 +10,9 @@ import static org.mockito.Mockito.when;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -20,17 +25,65 @@ import com.example.student.repo.StudentRepo;
 @SpringBootTest
 public class StudentServTest {
 
-	@Autowired
+	@InjectMocks
 	private StudentServImpl service;
 
-	@MockBean
+	@Mock
 	private StudentRepo repository;
 
 	@Test
 	private void getAllStudentsTest() {
-		when(repository.findAll()).thenReturn(Stream.of(new Student(23,"happy",78643.0), 
-				new Student(23,"xyz",45648.9)).collect(Collectors.toList()));
-		assertEquals(2, service.getAllStudents().size());
+		List<Student> mockStudents = new ArrayList<>();
+		mockStudents.add(new Student(24, "Jhon", 50000));
+		mockStudents.add(new Student(25, "Alice", 45000));
+
+		Mockito.when(repository.findAll()).thenReturn(mockStudents);
+
+		List<Student> result = service.getAllStudents();
+
+		assertEquals(mockStudents, result);
+	}
+
+	@Test
+	void testUpdate() {
+		// Mocking data
+		Student inputStudent = new Student(30, "Bob", 60000);
+
+		// Mocking repository behavior
+		Mockito.when(repository.save(Mockito.any(Student.class))).thenReturn(inputStudent);
+
+		// Perform the test
+		service.update(inputStudent);
+
+		// Assertion
+		Mockito.verify(repository, Mockito.times(1)).save(Mockito.any(Student.class));
+	}
+
+	@Test
+	void testDelete() {
+		// Mocking data
+		String studentName = "Charlie";
+
+		// Perform the test
+		service.delete(studentName);
+
+		// Assertion
+		Mockito.verify(repository, Mockito.times(1)).deleteByName(studentName);
+	}
+
+	@Test
+	void testSave() {
+		// Mocking data
+		Student inputStudent = new Student(28, "David", 55000);
+
+		// Mocking repository behavior
+		Mockito.when(repository.save(Mockito.any(Student.class))).thenReturn(inputStudent);
+
+		// Perform the test
+		Student result = service.save(inputStudent);
+
+		// Assertion
+		assertEquals(inputStudent, result);
 	}
 
 }
