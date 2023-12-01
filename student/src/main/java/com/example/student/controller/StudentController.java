@@ -51,13 +51,13 @@ public class StudentController {
 		
 	}
 	
-	@DeleteMapping("/deleteStudent/{id}")
-	public ResponseEntity<String> deleteStudent(@PathVariable int id) {
-		logger.info("Method deleteStudent started");
-		studentServ.deleteStudent(id);
-		logger.info("Student got deleted successfully");
-		return new ResponseEntity<>("Student deleted successfully", HttpStatus.OK);
-	}
+//	@DeleteMapping("/deleteStudent/{id}")
+//	public ResponseEntity<String> deleteStudent(@PathVariable int id) {
+//		logger.info("Method deleteStudent started");
+//		studentServ.deleteStudent(id);
+//		logger.info("Student got deleted successfully");
+//		return new ResponseEntity<>("Student deleted successfully", HttpStatus.OK);
+//	}
 	
 	@DeleteMapping("/deleteAllStudents")
 	public ResponseEntity<String> deleteAllStudents() {
@@ -67,18 +67,18 @@ public class StudentController {
 		return new ResponseEntity<String>("Deleted successfully",HttpStatus.NO_CONTENT);
 	}
 	
-	@PutMapping("/updateStudent/{id}")
-	public ResponseEntity<Student> updateStudent(@RequestBody Student s, @PathVariable int id) {
-		logger.info("Method updateStudent started");
-		Optional<Student> st = studentServ.getStudent(id);
-		Student student=st.get();
-		student.setName(s.getName());
-		student.setAge(s.getAge());
-		student.setSalary(s.getSalary());
-		logger.info("Student updated successfully");
-		return new ResponseEntity<Student>(studentServ.save(student), HttpStatus.OK);
-	}
-	
+//	@PutMapping("/updateStudent/{id}")
+//	public ResponseEntity<Student> updateStudent(@RequestBody Student s, @PathVariable int id) {
+//		logger.info("Method updateStudent started");
+//		Optional<Student> st = studentServ.getStudent(id);
+//		Student student=st.get();
+//		student.setName(s.getName());
+//		student.setAge(s.getAge());
+//		student.setSalary(s.getSalary());
+//		logger.info("Student updated successfully");
+//		return new ResponseEntity<Student>(studentServ.save(student), HttpStatus.OK);
+//	}
+//	
 	
 
 }

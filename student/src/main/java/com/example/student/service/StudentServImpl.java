@@ -28,21 +28,21 @@ public class StudentServImpl implements StudentServ {
 		return students;
 	}
 
-	public void deleteStudent(int id) {
-		studentRepo.deleteById(id);
-
-	}
+//	public void deleteStudent(int id) {
+//		studentRepo.deleteById(id);
+//
+//	}
 
 	public void deleteAllStudents() {
 		studentRepo.deleteAll();
 
 	}
 
-	public Optional<Student> getStudent(int id) {
+//	public Optional<Student> getStudent(int id) {
 //		Student student = studentRepo.findById(id);
 //		return student;
-		return studentRepo.findById(id);
-	}
+	// return studentRepo.findById(id);
+//	}
 
 	@Override
 	public Student save(Student student) {

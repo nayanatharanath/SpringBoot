@@ -14,9 +14,9 @@ public interface StudentServ {
 
 	List<Student> getAllStudents();
 
-	void deleteStudent(int id);
-
-	Optional<Student> getStudent(int id);
+//	void deleteStudent(int id);
+//
+//	Optional<Student> getStudent(int id);
 
 	void deleteAllStudents();
 
